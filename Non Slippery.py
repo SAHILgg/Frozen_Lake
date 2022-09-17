@@ -53,25 +53,7 @@ def policy_evaluation(P, nS, nA, policy, gamma=0.9, tol=1e-3):
     ############################
     
     # YOUR IMPLEMENTATION HERE #
-    '''
-    while(1):
-        state = 0
-        while(state <nS):
-            value_function[state] = 0
-            action = 0
-            while(action < nA):
-                value_function[state] += policy[state]*(P[state][action][0][2] + gamma*P[state][action][0][0]*prev_value_function[P[state][action][0][1]])
-                action += 1
-            state += 1
-        max_diff=0
-        for i in range(nS):
-            if(abs(value_function[i] - prev_value_function[i]) > max_diff):
-                max_diff = abs(value_function[i] - prev_value_function[i])
-        if(max_diff < tol):
-            break
-        else:
-            prev_value_function = value_function.copy()
-    '''
+   
     while(1):
         state = 0
         while(state <nS):
@@ -170,12 +152,7 @@ def policy_iteration(P, nS, nA, gamma=0.9, tol=10e-3):
         
         if(flag==1):
             break
-    '''
-    for i in range(25):
-        value_function = policy_evaluation(P, nS, nA, policy, gamma=0.9, tol=1e-3)
-        old_policy = policy.copy()
-        policy = policy_improvement(P, nS, nA, value_function, policy, gamma=0.9)
-    '''
+
     ############################
     return value_function, policy
 
@@ -223,18 +200,8 @@ def value_iteration(P, nS, nA, gamma=0.9, tol=1e-3):
             break
         else:
             prev_value_function = value_function.copy()
-    '''
-    state=0
-    while(state<nS):
-        action = 0
-        max=0
-        while(action<nA):
-            if(P[state][action][0][2] + gamma*P[state][action][0][0]*prev_value_function[P[state][action][0][1]] > max):
-                max = P[state][action][0][2] + gamma*P[state][action][0][0]*prev_value_function[P[state][action][0][1]]
-                policy[state] = action
-            action += 1
-        state += 1
-    '''  
+    
+      
     ############################
     return value_function, policy
 
